@@ -550,7 +550,7 @@ function bossAI(n) {
 
     const cl = x => Math.max(lo, Math.min(hi, x));
 
-    // ---------- CAÇADOR CARMESIM (fase 1): bumerangues, salto-golpe e investida ----------
+    // ---------- DORAZ (fase 1): bumerangues, salto-golpe e investida ----------
     if (n.bk === 'hunter') {
         if (ready) {
             n.ca++;
@@ -625,7 +625,7 @@ function bossAI(n) {
         return false;
     }
 
-    // ---------- SENHOR DO ABISMO (fase 6): 3 fases ----------
+    // ---------- AS DE TREVOS (fase 6): 3 fases ----------
     if (n.bk === 'lord') {
         const ph = n.hp > n.mh * 2 / 3 ? 1 : n.hp > n.mh / 3 ? 2 : 3;
         if (n.tph === undefined) n.tph = 1;
@@ -1037,12 +1037,12 @@ let WW=3400,SEG=[],PL=[],TS=[],GAPS=[],T,st=0,clr=0,ban=0;
 const solidG=x=>SEG.some(([a,b])=>x>=a&&x<=b);
 const rng=s=>{s=s*104729%2147483647;return()=>(s=s*16807%2147483647)/2147483647};
 const STG=[
-{n:'Cemitério',W:3400,gaps:[[1000,1090],[1180,1300]],pz:[[1450,2750,11]],graves:1,sky:['#090b18','#2b1a2a'],moon:['#c4472f',320,42,22],hill:'#1a1426',deco:'#0d0a14',dk:0,gr:['#2a2418','#3e5a2a'],pl:['#5b4630','#8a6d3c','#2a2012'],rain:'rgba(180,200,255,.25)',fl:1,zf:'sepia(1) hue-rotate(50deg) saturate(2.5) brightness(.8)',zomb:4,bird:[1450,2800],bi:130,sold:2,boss:{hp:34,sc:2.2,v:4,bk:'hunter',nm:'CAÇADOR CARMESIM',sp:.6,hh:78}},
+{n:'Cemitério',W:3400,gaps:[[1000,1090],[1180,1300]],pz:[[1450,2750,11]],graves:1,sky:['#090b18','#2b1a2a'],moon:['#c4472f',320,42,22],hill:'#1a1426',deco:'#0d0a14',dk:0,gr:['#2a2418','#3e5a2a'],pl:['#5b4630','#8a6d3c','#2a2012'],rain:'rgba(180,200,255,.25)',fl:1,zf:'sepia(1) hue-rotate(50deg) saturate(2.5) brightness(.8)',zomb:4,bird:[1450,2800],bi:130,sold:2,boss:{hp:34,sc:2.2,v:4,bk:'hunter',nm:'DORAZ O CARRASCO',sp:.6,hh:78}},
 {n:'Floresta Sombria',W:3600,gaps:[[900,990],[1500,1600],[2200,2330]],pz:[[450,1400,21],[1650,3050,22]],sky:['#06120d','#183024'],moon:['#cfe7a8',90,36,16],hill:'#0f2418',deco:'#07110c',dk:5,gr:['#1d2415','#2f5a24'],pl:['#4a3a22','#6f8a3a','#1d160c'],rain:'rgba(160,220,180,.2)',zf:'sepia(1) hue-rotate(70deg) saturate(3) brightness(.7)',zomb:3,bird:[500,3000],bi:110,sold:3,boss:{hp:34,sc:2.3,v:6,bk:'ent',nm:'ANCIÃO ENT',sp:.34,hh:122}},
 {n:'Deserto',W:3800,gaps:[[700,820],[1300,1420],[1900,2030],[2600,2740]],pz:[[300,1200,31],[1450,3100,32]],sky:['#2a1020','#c4602a'],moon:['#ffd27a',300,50,26],hill:'#7a3a22',deco:'#4a2216',dk:1,gr:['#8a6a3a','#c9a050'],pl:['#a07a40','#d9b060','#5a3e20'],zf:'sepia(1) saturate(1.5) brightness(1.1)',zomb:3,bird:[900,3200],bi:160,sold:3,boss:{hp:40,sc:2.4,v:7,bk:'scorp',nm:'ESCORPIÃO GIGANTE',sp:.5,hh:72,shoot:1}},
-{n:'Caverna de Gelo',W:3800,gaps:[[600,700],[1100,1230],[1700,1800],[2300,2440],[2900,3000]],pz:[[300,3250,41]],sky:['#0a1a30','#3a6a90'],moon:['#e8f4ff',60,40,14],hill:'#27506e',deco:'#143048',dk:2,gr:['#2c4a64','#bfe4f5'],pl:['#5a8aaa','#d8f2ff','#2a4a68'],rain:'rgba(255,255,255,.55)',zf:'hue-rotate(160deg) saturate(2) brightness(1.1)',zomb:3,bird:[300,3300],bi:90,sold:3,boss:{hp:46,sc:2.5,v:8,bk:'yeti',nm:'YETI DE GELO',sp:.6,hh:112,shoot:1}},
-{n:'Castelo',W:4000,gaps:[[800,900],[1600,1720],[2400,2520]],pz:[[200,3400,51]],fl:1,sky:['#10081c','#3a2048'],moon:['#bfa8ff',330,34,18],hill:'#251636',deco:'#0b0612',dk:3,gr:['#2a2a34','#4a4a5c'],pl:['#55556a','#8a8aa8','#22222e'],zf:'hue-rotate(250deg) saturate(2) brightness(.9)',zomb:4,bird:[200,3300],bi:100,sold:4,boss:{hp:56,sc:2.6,v:9,bk:'vamp',nm:'CONDE VAMPIRO',sp:.75,hh:108}},
-{n:'Inferno',W:4200,gaps:[[500,640],[1000,1160],[1500,1640],[2000,2200],[2500,2640],[3000,3200],[3500,3640]],pz:[[300,3700,61]],fl:1,lava:1,sky:['#200404','#a02a0c'],moon:['#ffcf3a',200,60,30],hill:'#5a1408',deco:'#2a0804',dk:4,gr:['#2a1208','#6a2a10'],pl:['#4a2a1a','#d9742a','#1a0c06'],rain:'rgba(255,140,60,.35)',zf:'hue-rotate(-20deg) saturate(3) brightness(.9)',zomb:5,bird:[200,3700],bi:80,sold:4,boss:{hp:85,sc:2.9,v:5,bk:'lord',nm:'SENHOR DO ABISMO',sp:.55,hh:118,sa:1}}];
+{n:'Terras Gelidas',W:3800,gaps:[[600,700],[1100,1230],[1700,1800],[2300,2440],[2900,3000]],pz:[[300,3250,41]],sky:['#0a1a30','#3a6a90'],moon:['#e8f4ff',60,40,14],hill:'#27506e',deco:'#143048',dk:2,gr:['#2c4a64','#bfe4f5'],pl:['#5a8aaa','#d8f2ff','#2a4a68'],rain:'rgba(255,255,255,.55)',zf:'hue-rotate(160deg) saturate(2) brightness(1.1)',zomb:3,bird:[300,3300],bi:90,sold:3,boss:{hp:46,sc:2.5,v:8,bk:'yeti',nm:'YETI DE GELO',sp:.6,hh:112,shoot:1}},
+{n:'Castelo da POKER',W:4000,gaps:[[800,900],[1600,1720],[2400,2520]],pz:[[200,3400,51]],fl:1,sky:['#10081c','#3a2048'],moon:['#bfa8ff',330,34,18],hill:'#251636',deco:'#0b0612',dk:3,gr:['#2a2a34','#4a4a5c'],pl:['#55556a','#8a8aa8','#22222e'],zf:'hue-rotate(250deg) saturate(2) brightness(.9)',zomb:4,bird:[200,3300],bi:100,sold:4,boss:{hp:56,sc:2.6,v:9,bk:'vamp',nm:'CONDE VAMPIRO',sp:.75,hh:108}},
+{n:'Inferno',W:4200,gaps:[[500,640],[1000,1160],[1500,1640],[2000,2200],[2500,2640],[3000,3200],[3500,3640]],pz:[[300,3700,61]],fl:1,lava:1,sky:['#200404','#a02a0c'],moon:['#ffcf3a',200,60,30],hill:'#5a1408',deco:'#2a0804',dk:4,gr:['#2a1208','#6a2a10'],pl:['#4a2a1a','#d9742a','#1a0c06'],rain:'rgba(255,140,60,.35)',zf:'hue-rotate(-20deg) saturate(3) brightness(.9)',zomb:5,bird:[200,3700],bi:80,sold:4,boss:{hp:85,sc:2.9,v:5,bk:'lord',nm:'ÁS DE TREVOS',sp:.55,hh:118,sa:1}}];
 function loadStage(i){st=i;T=STG[i];WW=T.W;GAPS=T.gaps;SEG=[];let a=0;for(const[g0,g1]of GAPS){SEG.push([a,g0]);a=g1}SEG.push([a,WW]);
  PL=[];for(const[za,zb,sd]of T.pz){const r=rng(sd);let x=za,y=138;while(x<zb){const w=44+(r()*36|0);PL.push({x:x|0,y,w});x+=w+30+(r()*30|0);y=Math.max(80,Math.min(138,y+(r()<.5?-1:1)*(18+(r()*16|0))))}}
  for(const[g0,g1]of GAPS){const n=Math.floor((g1-g0)/55);for(let k=1;k<=n;k++)PL.push({x:Math.round(g0+k*(g1-g0)/(n+1)-13),y:k%2?138:126,w:26})}
@@ -1285,7 +1285,7 @@ const NES_THEME = [
         pal: ['#ec761e', '#a02700', '#643f00', '#a02700', '#ec761e', 'rgba(0,0,0,0)', 0]
     },
 
-    // ---------- Fase 4: Caverna de Gelo ----------
+    // ---------- Fase 4: Terras Gelidas ----------
     {
         stg: {
             skyB:  ['#0327d0', '#008ffd', '#41ccfd'],
